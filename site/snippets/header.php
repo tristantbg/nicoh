@@ -78,7 +78,40 @@
 <div class="loader">
 	<div class="spinner">
 		<svg class="circular" viewBox="25 25 50 50">
-		<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+		<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"></circle>
 		</svg>
 	</div>
 </div>
+
+<header>
+	<div class="row">
+		<div class="inner">
+			<div id="site-title" class="col col-1-3">
+				<a href="<?= $site->url() ?>">
+				<?= $site->title()->html() ?>
+				</a>
+			</div>
+			<div class="col col-1-3" data-target="contact">Contact</div>
+			<div class="col col-1-3" id="lang-select">
+				<?php foreach($site->languages() as $language): ?>
+			      <a<?php e($site->language() != $language, ' class="switch"') ?> href="<?php echo $language->url() ?>">
+			        <?php echo html($language->name()) ?>
+			      </a>
+			    <?php endforeach ?>
+			</div>
+		</div>
+	</div>
+	<div id="contact" class="row">
+		<div class="inner">
+			<div class="col col-1-3"><?= $site->contacta1()->kt() ?></div>
+			<div class="col col-1-3"><?= $site->contacta2()->kt() ?></div>
+			<div class="col col-1-3">
+			<?php if($site->portfolio()->isNotEmpty()): ?>
+			<a href="<?= $site->portfolio()->toFile()->url() ?>" download>Pdf — Portfolio</a>
+			<?php endif ?>
+			</div>
+		</div>
+	</div>
+</header>
+
+<div id="container">

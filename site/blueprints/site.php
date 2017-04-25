@@ -14,6 +14,18 @@ fields:
   keywords:
     label: Keywords
     type:  tags
+  contacta1:
+    label: Contact area 1
+    type:  textarea
+    width: 1/2
+  contacta2:
+    label: Contact area 2
+    type:  textarea
+    width: 1/2
+  portfolio:
+    label: Portfolio
+    type:  select
+    width: 1/2
   customcss:
     label: Custom CSS
     type: textarea

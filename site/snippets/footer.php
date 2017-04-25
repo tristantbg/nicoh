@@ -1,3 +1,6 @@
+
+</div>
+
 <?php if(!$site->googleanalytics()->empty()): ?>
   <!-- Google Analytics-->
   <script>

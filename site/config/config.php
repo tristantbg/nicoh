@@ -29,7 +29,24 @@ of the system, please check out http://getkirby.com/docs/advanced/options
 
 */
 
+c::set('debug', true);
 c::set('oembed.lazyvideo', true);
+c::set('kirbytext.image.figure',false);
+c::set('languages', array(
+  array(
+    'code'    => 'fr',
+    'name'    => 'Fr',
+    'default' => true,
+    'locale'  => 'fr_FR',
+    'url'     => '/fr'
+  ),
+  array(
+    'code'    => 'en',
+    'name'    => 'En',
+    'locale'  => 'en_US',
+    'url'     => '/en',
+  )
+));
 //Typo
 c::set('typography', false);
 c::set('typography.ordinal.suffix', false);

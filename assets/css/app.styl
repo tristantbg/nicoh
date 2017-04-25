@@ -14,13 +14,17 @@ $secondary ?= #000
 $accent ?= #ff0000
 
 // Metrics
-$padding = 10px
+$padding = 3rem
+$paddingmobile = 1rem
 $kinetic = cubic-bezier(0.77, 0, 0.175, 1)
+$type = 4rem
+$typemobile = 1.5rem
 
 // CSS Reset
 global-reset()
 
-//webfont('Franklin Gothic', 'franklingothic', true, 'bold')
+webfont('NH', 'NH', true, 'normal')
+webfont('NHI', 'NHI', true, 'normal')
 
 body,html
 	width 100%
@@ -31,9 +35,15 @@ html
 	font-size 62.5%
 
 body
+	span(1)
 	text-rendering optimizeLegibility
 	font-smoothing()
-	font-size 1rem
+	-webkit-font-variant-ligatures no-common-ligatures
+	font-variant-ligatures no-common-ligatures
+	font-size $type
+	font-family 'NH', Helvetica Neue, Arial, sans-serif
+	+below($md)
+		font-size $typemobile
 
 p
 	margin-bottom 1em
@@ -55,6 +65,47 @@ p:last-child
 a, a:hover, a:visited, a:focus
 	color inherit
 	text-decoration none
+	cursor pointer
+
+.link
+	margin-left $padding
+	+below($md)
+		margin-left $paddingmobile
+	a
+		border-bottom 2px solid
+
+em
+	font-family 'NHI'
+
+img
+	display block
+	max-width 100%
+
+.diff
+	color $primary
+	mix-blend-mode difference
+	svg
+		stroke $primary
+	
+.row
+	span(1)
+	
+.col.col-1-3
+	span(1/3)
+	+below($md)
+		col(1/4)
+
+.col.col-1-3:first-child
+	+below($md)
+		col(2/4)
+
+.size-sync
+	//transition(width 300ms $kinetic)
+	width 50%
+	+below($md)
+		width 100%
+
+[data-target]
 	cursor pointer
 
 #outdated
@@ -91,6 +142,12 @@ a, a:hover, a:visited, a:focus
 //     }
 // }
 
+@keyframes dashanim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @keyframes rotate {
     100% {
         transform(rotate(360deg))
@@ -99,7 +156,7 @@ a, a:hover, a:visited, a:focus
 
 @keyframes dash {
     0% {
-        stroke-dasharray: 1, 200;
+        stroke-dasharray: 0, 200;
         stroke-dashoffset: 0
     }
     30% {
@@ -125,7 +182,12 @@ a, a:hover, a:visited, a:focus
 	.spinner
 		width 50px
 		height 50px
-		align()
+		position absolute
+		top $padding
+		right $padding
+		+below($md)
+			top $paddingmobile
+			right $paddingmobile
 		.circular
 			animation rotate 2s linear infinite
 			height 100%
@@ -142,3 +204,151 @@ a, a:hover, a:visited, a:focus
 				stroke-dasharray 1, 200
 				stroke-dashoffset 0
 				animation dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+
+header
+	span(1)
+	position fixed
+	//background $primary
+	z-index 500
+	.row
+		border-bottom 3px solid
+		padding ($padding/2) 0
+		+below($md)
+			border-bottom 2px solid
+			padding ($paddingmobile/2) 0
+		.inner
+			padding $padding $padding 0
+			+below($md)
+				padding $paddingmobile $paddingmobile 0
+	.row:first-child
+		padding-top 0
+	#contact
+		display none
+		.inner
+			padding-top 0
+	#lang-select
+		a:not(.switch)
+			display none
+
+#container
+	span(1)
+	background $primary
+	//margin-top 8rem
+	section
+		span(1)
+		height 100vh
+		padding-top 8.5rem
+		padding-bottom $padding
+		+below($md)
+			padding-top 3rem
+			padding-bottom $paddingmobile
+	section:last-child
+		padding-bottom ($padding - 0.5)
+		+below($md)
+			padding-bottom ($paddingmobile - 0.5)
+	.fp-tableCell
+		transition(transform 550ms cubic-bezier(.02, .01, .47, 1))
+	.section-marquee
+		transition(transform 550ms cubic-bezier(.02, .01, .47, 1))
+		min-height ($type*2 - 1)
+		padding ($padding/2) 0
+		+below($md)
+			padding ($padding/3) 0
+			min-height ($typemobile*2 - 1)
+		.marquee
+			height ($type + 0.4) !important
+			padding-left $padding
+			+below($md)
+				padding-left $paddingmobile
+				height ($typemobile + 0.4) !important
+	.slimScrollDiv
+		overflow initial !important
+		.slimScrollBar
+			opacity 1 !important
+	.slider
+		position relative
+		width 100%
+		overflow hidden
+		height 100%
+		.flickity-viewport
+			height "calc(100vh - %s)" % ($padding * 6 - 1)
+			+below($md)
+				height 100vh
+		.cell
+			height "calc(100vh - %s)" % ($padding * 6 - 1)
+			width 100%
+			padding 0 $padding
+			font-size ($type - 1.5)
+			background-size cover
+			background-position center
+			+below($md)
+				height "calc(100vh - %s)" % ($paddingmobile * 10)
+				padding 0 $paddingmobile
+				font-size $typemobile
+			.inner-content
+				display block
+				img
+					height 100%
+					+below($md)
+						height auto
+						max-height 100%
+	.section-nav
+		transition(width 600ms $kinetic)
+		position absolute
+		width 33%
+		height 100%
+		bottom 0
+		right $padding
+		fill none
+		stroke $secondary
+		stroke-width 3
+		z-index 100
+		+below($md)
+			display none
+		svg
+			width 100%
+			height 100%
+			path
+				vector-effect non-scaling-stroke
+			.clicktarget
+				fill transparent
+				stroke none
+	// .section-nav:hover
+	// 	path
+	// 		stroke-dasharray 2000
+	// 		stroke-dashoffset 2000
+	// 		animation dashanim 2s ease infinite alternate
+	#main-slider
+		.inner-content
+			height 100%
+	section.image-section
+		padding-top 0
+		padding-bottom 0
+		.section-marquee
+			position absolute
+			top 8.5rem
+			z-index 100
+			width 100%
+			+below($md)
+				top 3rem
+		.section-nav
+			height "calc(100% - %s)" % ($padding * 6 - 1)
+			bottom ($padding/2)
+		.slider
+			.cell, .flickity-viewport
+				height 100vh
+	section.text-section, section.blog-section
+		.slider
+			.cell
+				+below($md)
+					padding 0 $padding
+	section.blog-section
+		.inner-content
+			img
+				width 50%
+				mix-blend-mode multiply
+		// color $primary
+		// svg
+		// 	stroke $primary
+		// img
+		// 	mix-blend-mode luminosity

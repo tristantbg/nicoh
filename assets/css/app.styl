@@ -127,6 +127,8 @@ img
 	#outdated
 		display block
 
+@import 'svganim.styl'
+
 // @keyframes color {
 //     100%, 0% {
 //         stroke: #40382e
@@ -204,6 +206,26 @@ img
 				stroke-dasharray 1, 200
 				stroke-dashoffset 0
 				animation dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+
+@keyframes animtitle {
+    0% {
+        transform(translateY(0) translateZ(0))
+    }
+    50% {
+        transform(translateY(-33%) translateZ(0))
+    }
+    100% {
+        transform(translateY(0%) translateZ(0))
+    }
+}
+
+#site-title:hover a
+	for i in 1..20
+		span:nth-child({i})
+			+above($md)
+				display inline-block
+				animation(animtitle .5s infinite)
+				animation-delay( i * .05s )
 
 header
 	span(1)
@@ -352,3 +374,21 @@ header
 		// 	stroke $primary
 		// img
 		// 	mix-blend-mode luminosity
+
+#draggablemap
+	width 100vw
+	height 100vh
+	overflow hidden
+	img
+		max-width initial
+		cursor move !important
+		cursor -webkit-grab !important
+		cursor grab !important
+	img:active
+		cursor move !important
+		cursor -webkit-grabbing !important
+		cursor grabbing !important
+
+body.draggablemap
+	header
+		display none

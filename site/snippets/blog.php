@@ -32,7 +32,7 @@ $colors = substr($colors, 0, -1);
 	<?php endforeach ?>
 
 	<div class="section-nav" data-target="nav-next">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 594" preserveAspectRatio="none">
+		<svg id="blog-svg" class="drawsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 594" preserveAspectRatio="none">
 		<path class="st0" d="M.7 2.7h399.1L.7 146.3l386.4 78.2L.7 362.1l386.4 81.3L.7 591.1h380"/></svg>
   	</div>
   	

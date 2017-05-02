@@ -66,7 +66,7 @@
 	<?php endif ?>
 
 </head>
-<body>
+<body<?php e($page->template() == 'draggablemap', ' class="draggablemap"') ?>>
 
 <div id="outdated">
 	<div class="inner">
@@ -88,7 +88,10 @@
 		<div class="inner">
 			<div id="site-title" class="col col-1-3">
 				<a href="<?= $site->url() ?>">
-				<?= $site->title()->html() ?>
+				<?php foreach (str_split($site->title()->html()) as $key => $letter) {
+					if($letter == ' ') $letter = '&nbsp;';
+					echo '<span>'.$letter.'</span>';
+				} ?>
 				</a>
 			</div>
 			<div class="col col-1-3" data-target="contact">Contact</div>

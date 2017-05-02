@@ -2,8 +2,12 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             plugins: {
-                src: ['site/plugins/oembed/assets/js/oembed.js','node_modules/flickity/dist/flickity.pkgd.min.js','node_modules/fullpage.js/dist/jquery.fullpage.min.js','node_modules/flickity-bg-lazyload/bg-lazyload.js','node_modules/vivus/dist/vivus.js','node_modules/marquee3000/marquee3k.js','node_modules/jquery-slimscroll/jquery.slimscroll.js','lib/history.js/scripts/bundled/html4+html5/jquery.history.js'],
+                src: ['site/plugins/oembed/assets/js/oembed.js','node_modules/flickity/dist/flickity.pkgd.min.js','node_modules/fullpage.js/dist/jquery.fullpage.min.js','node_modules/flickity-bg-lazyload/bg-lazyload.js','node_modules/marquee3000/marquee3k.js','node_modules/jquery-slimscroll/jquery.slimscroll.js', 'lib/history.js/scripts/bundled/html4+html5/jquery.history.js'],
                 dest: 'assets/js/plugins.concat.js'
+            },
+            tweenmax: {
+              src: ['node_modules/gsap/src/minified/TweenMax.min.js', 'node_modules/gsap/src/minified/utils/Draggable.min.js', '../libraries/GSAP/ThrowPropsPlugin.min.js'],
+              dest: 'assets/js/vendor/drag.js'
             },
             js: {
                 src: ['assets/js/app.js'],

@@ -33,9 +33,9 @@ $(function() {
                         $('#contact').slideDown(400);
                         offset = ((isMobile) ? '3rem' : '8rem');
                         if (section.hasClass('image-section')) {
-                            section.find('.section-marquee').css('transform', 'translateY('+offset+') translateZ(0)');
+                            section.find('.section-marquee').css('transform', 'translateY(' + offset + ') translateZ(0)');
                         } else {
-                            section.find('.fp-tableCell').css('transform', 'translateY('+offset+') translateZ(0)');
+                            section.find('.fp-tableCell').css('transform', 'translateY(' + offset + ') translateZ(0)');
                         }
                     }
                 });
@@ -83,16 +83,14 @@ $(function() {
                 var $slider = $(this);
                 var initIndex = Math.floor(Math.random() * this.children.length);
                 var colors = $slider.attr('data-colors');
-                console.log(colors);
                 if (colors) {
-                  $slider.colorIndex = Math.floor(Math.random()*colors.length);
-                  colors = colors.split(",");
-                  selectColor();
+                    $slider.colorIndex = Math.floor(Math.random() * colors.length);
+                    colors = colors.split(",");
+                    selectColor();
                 }
                 if ($slider.attr('data-random') != 'true') {
-                  initIndex = 1;
+                    initIndex = 1;
                 }
-                console.log(initIndex);
                 $slider.flickity({
                     cellSelector: '.cell',
                     imagesLoaded: false,
@@ -117,28 +115,27 @@ $(function() {
                         if (typeof slidecaption !== typeof undefined && slidecaption !== false && slidecaption != prevslidecaption) {
                             $(this).parent().find('.section-marquee').html('<div class="marquee" data-speed="40" data-pausable="true">' + slidecaption + '</div>');
                             Marquee3k({
-                            selector: '.marquee:not(.is-ready)',
-                        });
+                                selector: '.marquee:not(.is-ready)',
+                            });
                             prevslidecaption = slidecaption;
                         }
-                        
                         if (!isMobile && $(this).is('#main-slider')) {
                             var mainwidth = $(flkty.selectedElement).find('.inner-content img').width();
                             $('.size-sync').width(mainwidth);
                             $('.section-nav').width(width - mainwidth - 90);
                         }
-
                         selectColor();
                     }
                 });
-                function selectColor(){
-                  if (colors && colors.length > 0) {
-                          color = colors[$slider.colorIndex];
-                          $parent = $slider.parents('section');
-                          $parent.css('background', color);
-                          $parent.find('.inner-content').css('background', color);
-                          $slider.colorIndex = ($slider.colorIndex + 1) % colors.length;
-                        }
+
+                function selectColor() {
+                    if (colors && colors.length > 0) {
+                        color = colors[$slider.colorIndex];
+                        $parent = $slider.parents('section');
+                        $parent.css('background', color);
+                        $parent.find('.inner-content').css('background', color);
+                        $slider.colorIndex = ($slider.colorIndex + 1) % colors.length;
+                    }
                 }
                 // if ($(this).is('#main-slider')) {
                 //     var flkty = $(this).data('flickity');

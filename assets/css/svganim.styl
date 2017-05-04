@@ -6,50 +6,93 @@
         stroke-dasharray: 80%, 80%;
     }
 }
+@keyframes prev-xl {
+    0% {
+        stroke-dasharray: 0%, 160%;
+    }
+    100% {
+        stroke-dasharray: 160%, 160%;
+    }
+}
 
 #prev:hover
 	path
-		animation prev 1.5s ease-in-out infinite
+		animation prev 1.5s ease-in-out forwards
+		+above($xl)
+			animation prev-xl 1.5s ease-in-out forwards 
 
 @keyframes next {
     0% {
         stroke-dasharray: 0%, 200%;
-        stroke-dashoffset: 0
     }
     100% {
         stroke-dasharray: 200%, 200%;
+    }
+}
+@keyframes next-xl {
+    0% {
+        stroke-dasharray: 0%, 400%;
+    }
+    100% {
+        stroke-dasharray: 400%, 400%;
     }
 }
 
 #next:hover
 	path
-		animation next 1.5s ease-in-out infinite
+		animation next 1.5s ease-in-out forwards
+		+above($xl)
+			animation next-xl 1.5s ease-in-out forwards 
 
 @keyframes start {
     0% {
-        stroke-dasharray: 0%, 200%;
+        stroke-dasharray: 250%, 250%;
+        stroke-dashoffset: -250%;
     }
     100% {
-        stroke-dasharray: 200%, 200%;
+        stroke-dasharray: 250%, 250%;
+        stroke-dashoffset: 0%;
+    }
+}
+@keyframes start-xl {
+    0% {
+        stroke-dasharray: 500%, 500%;
+        stroke-dashoffset: -500%;
+    }
+    100% {
+        stroke-dasharray: 500%, 500%;
+        stroke-dashoffset: 0%;
     }
 }
 
 #start:hover
 	path
-		animation start 1.5s ease-in-out infinite
+		animation start 1.5s ease-in-out forwards
+		+above($xl)
+			animation start-xl 1.5s ease-in-out forwards      
 
 @keyframes texts {
     0% {
-        stroke-dasharray: 0, 800%;
+        stroke-dasharray: 0, 500%;
     }
     100% {
-        stroke-dasharray: 800%, 800%;
+        stroke-dasharray: 500%, 500%;
+    }
+}
+@keyframes texts-xl {
+    0% {
+        stroke-dasharray: 0, 1000%;
+    }
+    100% {
+        stroke-dasharray: 1000%, 1000%;
     }
 }
 
-#texts-svg:hover
-    path
-        animation texts 1.5s ease-in-out infinite
+.texts-svg:hover
+	path
+		animation texts 1.5s ease-in-out forwards
+		+above($xl)
+			animation texts-xl 1.5s ease-in-out forwards
 
 @keyframes images {
     0% {
@@ -59,10 +102,20 @@
         stroke-dasharray: 1000%, 1000%;
     }
 }
+@keyframes images-xl {
+    0% {
+        stroke-dasharray: 0, 2000%;
+    }
+    100% {
+        stroke-dasharray: 2000%, 2000%;
+    }
+}
 
-#images-svg:hover
-    path
-        animation images 1.5s ease-in-out infinite
+.images-svg:hover
+	path
+		animation images 1.5s ease-in-out forwards
+		+above($xl)
+			animation images-xl 1.5s ease-in-out forwards
 
 @keyframes blog {
     0% {
@@ -72,7 +125,17 @@
         stroke-dasharray: 1300%, 1300%;
     }
 }
+@keyframes blog-xl {
+    0% {
+        stroke-dasharray: 0, 2600%;
+    }
+    100% {
+        stroke-dasharray: 2600%, 2600%;
+    }
+}
 
-#blog-svg:hover
-    path
-        animation blog 1.5s ease-in-out infinite  
+.blog-svg:hover
+	path
+		animation blog 1.5s ease-in-out forwards
+		+above($xl)
+			animation blog-xl 1.5s ease-in-out forwards

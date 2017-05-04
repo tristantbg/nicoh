@@ -113,7 +113,7 @@ $(function() {
                     if (flkty) {
                         slidecaption = $(flkty.selectedElement).attr('data-title');
                         if (typeof slidecaption !== typeof undefined && slidecaption !== false && slidecaption != prevslidecaption) {
-                            $(this).parent().find('.section-marquee').html('<div class="marquee" data-speed="40" data-pausable="true">' + slidecaption + '</div>');
+                            $(this).parent().find('.section-marquee').html('<div class="marquee" data-speed="20" data-pausable="true">' + slidecaption + '</div>');
                             Marquee3k({
                                 selector: '.marquee:not(.is-ready)',
                             });
@@ -180,8 +180,14 @@ $(function() {
                         $('.fp-section.active .fp-tableCell').css('transform', 'none');
                     }
                 },
-                afterLoad: function(anchorLink, index) {},
-                afterRender: function() {},
+                afterLoad: function(anchorLink, index) {
+
+                },
+                afterRender: function() {
+                  var numSections = $(this).find("section").length;
+                  console.log('Random jump to section : '+Math.floor(Math.random() * numSections));
+                  $.fn.fullpage.silentMoveTo(Math.floor(Math.random() * numSections));
+                },
                 afterResize: function() {},
                 afterResponsive: function(isResponsive) {},
                 afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {},

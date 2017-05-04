@@ -13,7 +13,7 @@
         type: 'xy',
         bounds: '#draggablemap',
         zIndexBoost: false,
-        edgeResistance: 0.8,
+        edgeResistance: 1,
         throwProps: true
     });
     TweenLite.to(map,0,{
